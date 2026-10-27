@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài kiểm tra giữa học kỳ I - Tin học 4</title>
+<style>
+:root{--blue:#2563eb;--ink:#172033;--muted:#5b6475;--line:#dbe3ef;--bg:#f3f7fc;--good:#15803d;--bad:#b91c1c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:22px 16px 44px}header{background:linear-gradient(135deg,#1d4ed8,#60a5fa);color:white;padding:24px;border-radius:18px;box-shadow:0 8px 24px #1d4ed822}
+header h1{margin:0 0 6px;font-size:clamp(1.4rem,3vw,2rem);line-height:1.25}header p{margin:4px 0}.pill{display:inline-block;background:#ffffff26;border:1px solid #ffffff55;border-radius:999px;padding:4px 10px;font-size:.9rem;margin-top:10px}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:16px;box-shadow:0 3px 12px #0f172a08}h2{font-size:1.15rem;margin:0 0 14px}
+.student-grid{display:grid;grid-template-columns:2fr 1fr;gap:14px}label.field{display:block;font-weight:650}input[type=text]{display:block;width:100%;margin-top:6px;border:1px solid #b9c6d8;border-radius:10px;padding:11px 12px;font:inherit}
+.status{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.time{font-weight:800;font-size:1.25rem;font-variant-numeric:tabular-nums}.progress-track{height:10px;background:#e5edf8;border-radius:99px;overflow:hidden;margin-top:10px}.progress-bar{height:100%;width:100%;background:var(--blue);transition:width .3s linear}.progress-label,.hint{color:var(--muted);font-size:.92rem}.question{border:1px solid var(--line);border-radius:14px;padding:17px;margin:14px 0}.q-title{margin:0 0 12px;font-weight:750}.q-number{color:var(--blue)}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid #d9e2ef;border-radius:11px;padding:10px 12px;cursor:pointer}.option:hover{background:#f5f8ff;border-color:#9ab8f5}.option:has(input:checked){background:#eff6ff;border-color:var(--blue)}.option input{margin-top:5px;accent-color:var(--blue);flex:0 0 auto}
+.essay-input{display:block;width:100%;min-height:4.8em;margin-top:8px;padding:10px 12px;border:1px solid #d9e2ef;border-radius:11px;font:inherit;resize:vertical;background:#fff}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}button{border:0;border-radius:11px;padding:12px 17px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#e8eef8;color:#1e293b}button:disabled{opacity:.5;cursor:not-allowed}#result{white-space:pre-line;border-left:4px solid var(--blue);padding:12px 16px;background:#eff6ff;border-radius:8px;margin-top:16px}
+[hidden]{display:none!important}footer{color:var(--muted);font-size:.85rem;text-align:center;margin-top:22px}@media(max-width:620px){.student-grid,.status{grid-template-columns:1fr}.panel{padding:15px}header{padding:20px}}@media print{body{background:white}header{background:white;color:black;box-shadow:none;padding:0}.panel,.question{box-shadow:none;break-inside:avoid}.actions,footer,#identityPanel,#timerPanel{display:none!important}}
+</style>
+</head>
+<body><div class="wrap">
+<header><h1>BÀI KIỂM TRA GIỮA HỌC KỲ I – TIN HỌC 4</h1>
+<p>Năm học 2026–2027</p><p>Bộ sách: Kết nối tri thức với cuộc sống</p>
+<span class="pill">10 câu trắc nghiệm + 4 câu tự luận · 10 điểm · 35 phút</span></header>
+<section class="panel" id="identityPanel"><h2>Thông tin học sinh</h2><div class="student-grid">
+<label class="field">Họ và tên<input id="studentName" type="text" placeholder="Ví dụ: Nguyễn Minh An" maxlength="100" required></label>
+<label class="field">Lớp<input id="studentClass" type="text" placeholder="Ví dụ: 4A1" maxlength="30" required></label></div>
+<p class="hint">Điền họ tên và lớp trước khi làm bài. Mỗi câu trắc nghiệm chỉ chọn một đáp án.</p></section>
+<section class="panel" id="timerPanel"><div class="status"><div><h2 style="margin-bottom:2px">Thời gian làm bài</h2><div class="progress-label" id="answeredLabel">Đã trả lời 0/10 câu</div></div><div class="time" id="timeText">35:00</div></div><div class="progress-track"><div class="progress-bar" id="timeBar"></div></div></section>
+<form id="quizForm" class="panel"><h2>Phần I. Trắc nghiệm (5,0 điểm)</h2><div id="questions"></div>
+<h2 style="margin-top:24px">Phần II. Tự luận (5,0 điểm)</h2><p class="hint">Phần tự luận do giáo viên chấm, không được hệ thống tự động tính điểm.</p>
+<div class="question"><label class="q-title" for="e11">Câu 11 (1,0 điểm). Hãy kể tên hai thiết bị phần cứng của máy tính và nêu công dụng của mỗi thiết bị.</label><textarea id="e11" class="essay-input" rows="3" placeholder="Nhập câu trả lời..."></textarea></div>
+<div class="question"><label class="q-title" for="e12">Câu 12 (1,0 điểm). Phần mềm máy tính là gì? Hãy nêu một ví dụ về phần mềm em biết.</label><textarea id="e12" class="essay-input" rows="3" placeholder="Nhập câu trả lời..."></textarea></div>
+<div class="question"><label class="q-title" for="e13">Câu 13 (1,5 điểm). Khi tìm thông tin về một con vật trên Internet, em nên làm gì để tìm được thông tin phù hợp và đáng tin cậy?</label><textarea id="e13" class="essay-input" rows="3" placeholder="Nhập câu trả lời..."></textarea></div>
+<div class="question"><label class="q-title" for="e14">Câu 14 (1,5 điểm). Nêu ít nhất ba quy tắc giúp em sử dụng máy tính an toàn, đúng cách và có trách nhiệm.</label><textarea id="e14" class="essay-input" rows="3" placeholder="Nhập câu trả lời..."></textarea></div>
+<div class="actions"><button class="primary" type="submit" id="submitBtn">Nộp bài</button><button class="secondary" type="button" onclick="window.print()">In đề</button></div>
+<div id="result" hidden aria-live="polite"></div><p class="hint">Sau khi nộp, hệ thống chấm phần trắc nghiệm và hiển thị đáp án. Hãy lưu hoặc in kết quả nếu cần.</p></form>
+<footer>Đề kiểm tra tương tác tham khảo – giáo viên có thể điều chỉnh theo nội dung thực tế đã dạy.</footer></div>
+<script>
+const QUESTIONS=[
+{q:"Bộ phận nào sau đây là thiết bị phần cứng của máy tính?",o:["Trò chơi máy tính","Màn hình","Phần mềm vẽ","Hệ điều hành"],a:1},
+{q:"Thiết bị nào thường dùng để nhập chữ và số vào máy tính?",o:["Loa","Màn hình","Bàn phím","Máy chiếu"],a:2},
+{q:"Thiết bị nào giúp em nghe âm thanh phát ra từ máy tính?",o:["Loa","Chuột","Bàn phím","Máy quét"],a:0},
+{q:"Đâu là ví dụ về phần mềm máy tính?",o:["Chuột máy tính","Màn hình","Phần mềm soạn thảo văn bản","Dây điện"],a:2},
+{q:"Để chọn một biểu tượng trên màn hình bằng chuột, em thường làm gì?",o:["Nháy chuột trái một lần","Rút dây nguồn","Gõ phím Enter liên tục","Tắt màn hình"],a:0},
+{q:"Khi gõ bàn phím, tư thế nào là phù hợp?",o:["Cúi sát mặt vào màn hình","Ngồi ngay ngắn, giữ khoảng cách phù hợp","Nằm trên bàn để gõ","Ngồi vặn người sang bên"],a:1},
+{q:"Muốn tìm thông tin trên Internet, em có thể sử dụng công cụ nào?",o:["Công cụ tìm kiếm","Máy tính bỏ túi","Phần mềm máy ảnh","Thùng rác"],a:0},
+{q:"Từ khóa tìm kiếm nên như thế nào để kết quả phù hợp hơn?",o:["Thật dài và không liên quan","Chỉ gõ các kí tự ngẫu nhiên","Ngắn gọn, nêu đúng điều cần tìm","Luôn gõ tên của mình"],a:2},
+{q:"Khi đọc được thông tin trên một trang web, em nên làm gì?",o:["Tin ngay mọi thông tin","Kiểm tra nguồn và đối chiếu khi cần","Chia sẻ ngay cho mọi người","Nhập thông tin cá nhân vào mọi trang"],a:1},
+{q:"Nếu một trang web yêu cầu em cung cấp mật khẩu hoặc thông tin riêng tư, em nên làm gì?",o:["Cung cấp ngay","Nhờ người lạ nhập giúp","Dừng lại và hỏi cha mẹ hoặc thầy cô","Đăng công khai mật khẩu"],a:2}
+];
+const letters=["A","B","C","D"], form=document.getElementById("quizForm"), questionsEl=document.getElementById("questions");
+questionsEl.innerHTML=QUESTIONS.map((q,i)=>`<fieldset class="question" style="min-width:0"><legend class="q-title"><span class="q-number">Câu ${i+1}.</span> ${q.q}</legend><div class="options">${q.o.map((v,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"><span><strong>${letters[j]}.</strong> ${v}</span></label>`).join("")}</div></fieldset>`).join("");
+questionsEl.addEventListener("change",()=>{let n=QUESTIONS.filter((q,i)=>form.querySelector(`input[name=q${i}]:checked`)).length;document.getElementById("answeredLabel").textContent=`Đã trả lời ${n}/10 câu`});
+let remaining=35*60, submitted=false;
+function tick(){if(submitted)return;let m=Math.floor(remaining/60),s=remaining%60;document.getElementById("timeText").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;document.getElementById("timeBar").style.width=(remaining/(35*60)*100)+"%";if(remaining<=0){submit(true);return}remaining--}
+const timer=setInterval(tick,1000);
+function submit(auto=false){if(submitted)return;let name=document.getElementById("studentName").value.trim(),cls=document.getElementById("studentClass").value.trim();if(!auto&&(!name||!cls)){alert("Em hãy nhập đầy đủ họ tên và lớp trước khi nộp bài.");return}if(!auto&&!confirm("Em chắc chắn muốn nộp bài?"))return;submitted=true;clearInterval(timer);
+let score=0, detail=[];QUESTIONS.forEach((q,i)=>{let el=form.querySelector(`input[name=q${i}]:checked`),v=el?Number(el.value):null,ok=v===q.a;if(ok)score+=0.5;detail.push(`Câu ${i+1}: ${v===null?"Chưa trả lời":letters[v]+(ok?" – Đúng":" – Sai")} | Đáp án: ${letters[q.a]}. ${q.o[q.a]}`)});
+form.querySelectorAll("input,textarea,button").forEach(x=>{if(x.type!=="button")x.disabled=true});let result=document.getElementById("result");result.hidden=false;result.textContent=`Học sinh: ${name||"(chưa nhập)"} – Lớp: ${cls||"(chưa nhập)"}\\nĐiểm trắc nghiệm: ${score.toFixed(1)}/5,0\\n\\nĐÁP ÁN VÀ KẾT QUẢ\\n${detail.join("\\n")}\\n\\nPhần tự luận (5,0 điểm) cần được giáo viên chấm.`;
+let data={hoTen:name,lop:cls,diemTracNghiem:score,tongDiemTracNghiem:5,chiTiet:detail,tuLuan:{cau11:document.getElementById("e11").value,cau12:document.getElementById("e12").value,cau13:document.getElementById("e13").value,cau14:document.getElementById("e14").value}};
+let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="ket_qua_tin_hoc_4.json";a.textContent="Tải kết quả";a.style.display="inline-block";a.style.marginTop="12px";result.appendChild(document.createElement("br"));result.appendChild(a);document.getElementById("submitBtn").disabled=true}
+form.addEventListener("submit",e=>{e.preventDefault();submit(false)});
+</script></body></html>
